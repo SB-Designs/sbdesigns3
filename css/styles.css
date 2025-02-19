@@ -441,24 +441,20 @@ html {
         width: 100%;
         height: 4px; /* Smaller and thicker bars */
         background-color: white;
-        transition: all 0.3s ease;
+        transition: transform 0.3s ease; /* Smooth rotation */
     }
 
-    /* When the hamburger menu is active (open), transform it into an "X" */
+    /* When the hamburger menu is active (open), rotate the bars */
     .menu-toggle.active .bar:nth-child(1) {
-        transform: rotate(45deg);
-        position: absolute;
-        top: 0;
+        transform: rotate(45deg); /* Rotate top bar 45 degrees */
     }
 
     .menu-toggle.active .bar:nth-child(2) {
-        opacity: 0; /* Hide the middle bar */
+        transform: rotate(-45deg); /* Rotate middle bar -45 degrees */
     }
 
     .menu-toggle.active .bar:nth-child(3) {
-        transform: rotate(-45deg);
-        position: absolute;
-        bottom: 0;
+        transform: rotate(90deg); /* Rotate bottom bar 90 degrees */
     }
 
     /* Style for the navigation menu */
@@ -479,7 +475,7 @@ html {
     /* Active state of the navigation menu */
     nav .nav-links.active {
         display: flex;
-        opacity: 1; /* Fade in */
+        opacity: 1;
         transform: translateY(0); /* Slide into view */
     }
 
