@@ -37,19 +37,63 @@
 
 <body>
     <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="SB Designs">
-        </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="https://gopixl.pages.dev">Pixl</a></li>
-                <li><a href="https://sbphotos.pages.dev">SB Photos</a></li>
-                <li><a href="https://trackle.pages.dev">Trackle</a></li>
-                <li><a href="https://undergroundblitz.pages.dev">Underground Blitz</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="logo">
+        <img src="images/logo.png" alt="SB Designs">
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span class="arrow">&#9662;</span>
+    </div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="https://gopixl.pages.dev">Pixl</a></li>
+            <li><a href="https://sbphotos.pages.dev">SB Photos</a></li>
+            <li><a href="https://trackle.pages.dev">Trackle</a></li>
+            <li><a href="https://undergroundblitz.pages.dev">Underground Blitz</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<script>
+    function toggleMenu() {
+        document.querySelector(".nav-links").classList.toggle("active");
+    }
+</script>
+
+<style>
+    .menu-toggle {
+        display: none;
+        cursor: pointer;
+    }
+    
+    .menu-toggle .arrow {
+        font-size: 24px;
+        color: white;
+    }
+    
+    @media (max-width: 768px) {
+        .menu-toggle {
+            display: block;
+        }
+        nav .nav-links {
+            display: none;
+            flex-direction: column;
+            background: #3895FF;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+        }
+        nav .nav-links.active {
+            display: flex;
+        }
+        nav .nav-links li {
+            margin-bottom: 10px;
+        }
+    }
+</style>
+
 
     <section id="home" class="hero-section">
         <div class="hero-content">
