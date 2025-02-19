@@ -41,7 +41,9 @@
         <img src="images/logo.png" alt="SB Designs">
     </div>
     <div class="menu-toggle" onclick="toggleMenu()">
-        <span class="arrow">&#8964;</span> <!-- Changed to down chevron -->
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
     </div>
     <nav>
         <ul class="nav-links">
@@ -57,6 +59,7 @@
 <script>
     function toggleMenu() {
         document.querySelector(".nav-links").classList.toggle("active");
+        document.querySelector(".menu-toggle").classList.toggle("active"); // Toggle the active class for the hamburger
     }
 </script>
 
@@ -64,18 +67,44 @@
     .menu-toggle {
         display: none;
         cursor: pointer;
+        width: 40px;
+        height: 30px;
+        position: relative;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s ease;
     }
-    
-    .menu-toggle .arrow {
-        font-size: 24px;
-        color: white;
-        transition: transform 0.3s ease; /* Smooth transition on toggle */
+
+    .menu-toggle .bar {
+        display: block;
+        width: 100%;
+        height: 5px;
+        background-color: white;
+        transition: all 0.3s ease;
     }
-    
+
+    /* When the hamburger menu is active (open), transform it into an "X" */
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg);
+        position: absolute;
+        top: 0;
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0; /* Hide the middle bar */
+    }
+
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(-45deg);
+        position: absolute;
+        bottom: 0;
+    }
+
     @media (max-width: 768px) {
         .menu-toggle {
-            display: block;
+            display: flex;
         }
+
         nav .nav-links {
             display: none;
             flex-direction: column;
@@ -85,13 +114,15 @@
             left: 0;
             width: 100%;
             padding: 10px;
-            opacity: 0; /* Start with opacity 0 */
-            transition: opacity 0.3s ease; /* Smooth fade in/out */
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
+
         nav .nav-links.active {
             display: flex;
-            opacity: 1; /* Fade in when active */
+            opacity: 1;
         }
+
         nav .nav-links li {
             margin-bottom: 10px;
         }
