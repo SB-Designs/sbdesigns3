@@ -41,7 +41,7 @@
         <img src="images/logo.png" alt="SB Designs">
     </div>
     <div class="menu-toggle" onclick="toggleMenu()">
-        <span class="arrow">&#9662;</span>
+        <span class="arrow">&#2304;</span> <!-- Changed to down chevron -->
     </div>
     <nav>
         <ul class="nav-links">
@@ -69,6 +69,7 @@
     .menu-toggle .arrow {
         font-size: 24px;
         color: white;
+        transition: transform 0.3s ease; /* Smooth transition on toggle */
     }
     
     @media (max-width: 768px) {
@@ -84,15 +85,19 @@
             left: 0;
             width: 100%;
             padding: 10px;
+            opacity: 0; /* Start with opacity 0 */
+            transition: opacity 0.3s ease; /* Smooth fade in/out */
         }
         nav .nav-links.active {
             display: flex;
+            opacity: 1; /* Fade in when active */
         }
         nav .nav-links li {
             margin-bottom: 10px;
         }
     }
 </style>
+
 
 
     <section id="home" class="hero-section">
