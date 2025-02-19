@@ -60,3 +60,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 document.getElementById("copyright-year").textContent = new Date().getFullYear();
+
+function toggleMenu() {
+        document.querySelector(".nav-links").classList.toggle("active");
+        document.querySelector(".menu-toggle").classList.toggle("active"); // Toggle the active class for the hamburger
+    }
