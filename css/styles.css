@@ -425,8 +425,9 @@ html {
     font-weight: 500;
 }
 
-.menu-toggle {
-        display: none;
+    /* Style for the hamburger menu */
+    .menu-toggle {
+        display: flex;
         cursor: pointer;
         width: 30px; /* Smaller width */
         height: 24px; /* Smaller height */
@@ -436,22 +437,51 @@ html {
         transition: transform 0.3s ease;
     }
 
+    /* Style for each bar in the hamburger */
     .menu-toggle .bar {
         display: block;
         width: 100%;
         height: 4px; /* Smaller and thicker bars */
         background-color: white;
         transition: transform 0.3s ease; /* Smooth rotation */
+        position: absolute;
+        left: 0;
+    }
+
+    /* Bar positioning */
+    .menu-toggle .bar:nth-child(1) {
+        top: 0;
+    }
+
+    .menu-toggle .bar:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .menu-toggle .bar:nth-child(3) {
+        bottom: 0;
     }
 
     /* When the hamburger menu is active (open), rotate the bars to be vertical */
-    .menu-toggle.active .bar {
-        transform: rotate(90deg); /* Rotate each bar to be vertical */
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(90deg);
+        top: 0;
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+        transform: rotate(90deg);
+        top: 50%;
+        transform: translateY(-50%) rotate(90deg);
+    }
+
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(90deg);
+        bottom: 0;
     }
 
     /* Style for the navigation menu */
     nav .nav-links {
-        display: none;
+        display: flex;
         flex-direction: column;
         background: #3895FF;
         position: absolute;
@@ -466,7 +496,6 @@ html {
 
     /* Active state of the navigation menu */
     nav .nav-links.active {
-        display: flex;
         opacity: 1;
         transform: translateY(0); /* Slide into view */
     }
@@ -475,8 +504,32 @@ html {
         margin-bottom: 10px;
     }
 
+    /* Ensure the menu appears on all screen sizes */
     @media (max-width: 768px) {
         .menu-toggle {
             display: flex;
+        }
+
+        nav .nav-links {
+            display: none;
+        }
+
+        nav .nav-links.active {
+            display: flex;
+        }
+    }
+
+    /* For all screen sizes, ensure hamburger icon and sliding menu */
+    @media (min-width: 769px) {
+        .menu-toggle {
+            display: flex;
+        }
+
+        nav .nav-links {
+            display: none; /* Hide menu by default */
+        }
+
+        nav .nav-links.active {
+            display: flex; /* Show menu when active */
         }
     }
