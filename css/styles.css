@@ -444,17 +444,9 @@ html {
         transition: transform 0.3s ease; /* Smooth rotation */
     }
 
-    /* When the hamburger menu is active (open), rotate the bars */
-    .menu-toggle.active .bar:nth-child(1) {
-        transform: rotate(45deg); /* Rotate top bar 45 degrees */
-    }
-
-    .menu-toggle.active .bar:nth-child(2) {
-        transform: rotate(-45deg); /* Rotate middle bar -45 degrees */
-    }
-
-    .menu-toggle.active .bar:nth-child(3) {
-        transform: rotate(90deg); /* Rotate bottom bar 90 degrees */
+    /* When the hamburger menu is active (open), rotate the bars to be vertical */
+    .menu-toggle.active .bar {
+        transform: rotate(90deg); /* Rotate each bar to be vertical */
     }
 
     /* Style for the navigation menu */
