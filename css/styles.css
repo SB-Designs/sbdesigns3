@@ -424,3 +424,71 @@ html {
     color: #3895FF;
     font-weight: 500;
 }
+
+.menu-toggle {
+        display: none;
+        cursor: pointer;
+        width: 30px; /* Smaller width */
+        height: 24px; /* Smaller height */
+        position: relative;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s ease;
+    }
+
+    .menu-toggle .bar {
+        display: block;
+        width: 100%;
+        height: 4px; /* Smaller and thicker bars */
+        background-color: white;
+        transition: all 0.3s ease;
+    }
+
+    /* When the hamburger menu is active (open), transform it into an "X" */
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg);
+        position: absolute;
+        top: 0;
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0; /* Hide the middle bar */
+    }
+
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(-45deg);
+        position: absolute;
+        bottom: 0;
+    }
+
+    /* Style for the navigation menu */
+    nav .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #3895FF;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        opacity: 0;
+        transform: translateY(-20px); /* Start slightly above */
+        transition: transform 0.3s ease, opacity 0.3s ease; /* Slide down and fade in */
+    }
+
+    /* Active state of the navigation menu */
+    nav .nav-links.active {
+        display: flex;
+        opacity: 1; /* Fade in */
+        transform: translateY(0); /* Slide into view */
+    }
+
+    nav .nav-links li {
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .menu-toggle {
+            display: flex;
+        }
+    }
