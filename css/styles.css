@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     margin: 0;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible Mono', sans-serif;
     color: #1E4D84;
     background-color: #f9f9f9;
 }
@@ -134,7 +134,7 @@ nav .nav-links a:hover {
 
 /* Contact Section */
 .contact-section {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible Mono', sans-serif;
     padding: 60px 20px;
     text-align: center;
     background-color: #3895FF;
@@ -148,7 +148,7 @@ nav .nav-links a:hover {
 
 .contact-section form {
     display: flex;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible Mono', sans-serif;
     flex-direction: column;
     align-items: center;
     max-width: 600px;
@@ -157,7 +157,7 @@ nav .nav-links a:hover {
 
 .contact-section input,
 .contact-section textarea {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible Mono', sans-serif;
     width: 100%;
     padding: 15px;
     margin-bottom: 20px;
@@ -166,7 +166,7 @@ nav .nav-links a:hover {
 }
 
 .contact-section button {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible Mono', sans-serif;
     background-color: #1E4D84;
     color: white;
     padding: 15px 30px;
@@ -372,7 +372,7 @@ html {
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible Mono', sans-serif;
 }
 
 .contact-form .form-group {
@@ -394,7 +394,7 @@ html {
     border-radius: 4px;
     font-size: 1rem;
     color: #1E4D84;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible Mono', sans-serif;
 }
 
 .contact-form textarea {
