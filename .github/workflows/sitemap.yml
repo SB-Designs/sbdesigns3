@@ -20,15 +20,15 @@ jobs:
           echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
           echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' >> sitemap.xml
           for file in $(find . -name "*.html"); do
-            url="https://sbdesigns.pages.devm${file#./}"
+            url="https://sbdesigns.pages.dev${file#./}"
             echo "<url><loc>$url</loc><lastmod>$timestamp</lastmod></url>" >> sitemap.xml
           done
           echo '</urlset>' >> sitemap.xml
 
       - name: Commit and push if changed
         run: |
-          git config --global user.name "Github Actions"
+          git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add sitemap.xml
           git diff --quiet && git diff --staged --quiet || git commit -m "Update sitemap"
-          git push
+          git push https://github.com/${{ secrets.GITHUB_ACTOR }}:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
