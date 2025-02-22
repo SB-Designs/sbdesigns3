@@ -4,34 +4,25 @@ on:
   push:
     branches:
       - main
-  schedule:
-    - cron: '0 * * * *'  # Runs every hour
 
 jobs:
   update-sitemap:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write    # Add this line to grant write permissions
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Generate sitemap
-      run: |
-        timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-        echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
-        echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' >> sitemap.xml
-        for file in $(find . -name "*.html"); do
-          url="https://sbdesigns.pages.dev${file#./}"
-          echo "<url><loc>$url</loc><lastmod>$timestamp</lastmod></url>" >> sitemap.xml
-        done
-        echo '</urlset>' >> sitemap.xml
-
-    - name: Commit sitemap
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-        git add sitemap.xml
-        git diff --quiet && git diff --staged --quiet || git commit -m "Update sitemap"
-        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/SB-Designs/sbdesigns3.git HEAD:main
+      - name: Update sitemap
+        run: |
+          # Your sitemap update script here
+          
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add .
+          git commit -m "Update sitemap"
+          git push
