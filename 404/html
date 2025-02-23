@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | SB Designs</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Atkinson Hyperlegible', sans-serif;
+            background-color: white;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button.changeable {
+            background-color: #3895FF; /* Default colour */
+            color: white;
+        }
+
+        .button.changeable:hover {
+            background-color: #1E4D84;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <img src="/images/square.svg" alt="Logo" class="logo">
+    <h1>Page Not Found</h1>
+    <p>404 - This page does not exist.</p>
+    <a href="/"><button class="button changeable">Return to Home</button></a>
+
+    <script>
+        // Example: Change button colour dynamically
+        const button = document.querySelector('.button.changeable');
+        button.style.backgroundColor = '#3895FF'; // Replace with your desired colour
+    </script>
+</body>
+</html>
