@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 Moon</title>
+  <title>404 | SB Designs</title>
   <style>
     html,
     body {
@@ -401,10 +401,9 @@
 
   <div class="error">
     <div class="error__title">404</div>
-    <div class="error__subtitle">Hmmm...</div>
-    <div class="error__description">It looks like one of the  developers fell asleep</div>
-    <button class="error__button error__button--active">LOGIN</button>
-    <button class="error__button">CONTACT</button>
+    <div class="error__subtitle">Page Not Found</div>
+    <div class="error__description">You ended up in an unknown territory</div>
+    <a href="/"><button class="error__button error__button--active">Return home</button></a>
   </div>
 
   <div class="astronaut">
@@ -513,6 +512,9 @@
 
     drawVisor();
     animate();
+    // Lock scrolling
+    document.body.style.overflow = 'hidden';
+
   </script>
 </body>
 </html>
