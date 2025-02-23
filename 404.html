@@ -79,7 +79,10 @@
         }
 
         canvas {
-            background: lightgray;
+            background: #f0f0f0;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -95,10 +98,14 @@
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close" onclick="closeGame()">&times;</span>
             <canvas id="gameCanvas" width="300" height="400"></canvas>
+            <button class="button changeable" onclick="startGame()">Restart</button>
         </div>
     </div>
 
     <script>
+        let playerImage = new Image();
+        playerImage.src = "blue-alien.png";
+
         function openGame() {
             document.getElementById("gameModal").style.display = "flex";
             startGame();
@@ -113,17 +120,16 @@
         function startGame() {
             const canvas = document.getElementById("gameCanvas");
             const ctx = canvas.getContext("2d");
-            let player = { x: 140, y: 350, width: 20, height: 20 };
+            let player = { x: 140, y: 350, width: 40, height: 40 };
             let obstacles = [];
             let gameOver = false;
 
             function drawPlayer() {
-                ctx.fillStyle = "blue";
-                ctx.fillRect(player.x, player.y, player.width, player.height);
+                ctx.drawImage(playerImage, player.x, player.y, player.width, player.height);
             }
 
             function drawObstacles() {
-                ctx.fillStyle = "red";
+                ctx.fillStyle = "#1E4D84";
                 obstacles.forEach(obstacle => {
                     ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
                     obstacle.y += 5;
