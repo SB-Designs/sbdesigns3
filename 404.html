@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,12 +42,44 @@
         }
 
         .button.changeable {
-            background-color: #3895FF; /* Default colour */
+            background-color: #3895FF;
             color: white;
         }
 
         .button.changeable:hover {
             background-color: #1E4D84;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        canvas {
+            background: lightgray;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -58,11 +89,78 @@
     <h1>Page Not Found</h1>
     <p>404 - This page does not exist.</p>
     <a href="/"><button class="button changeable">Return to Home</button></a>
+    <button class="button changeable" onclick="openGame()">Play a Game</button>
+
+    <div class="modal" id="gameModal" onclick="closeGame(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close" onclick="closeGame()">&times;</span>
+            <canvas id="gameCanvas" width="300" height="400"></canvas>
+        </div>
+    </div>
 
     <script>
-        // Example: Change button colour dynamically
-        const button = document.querySelector('.button.changeable');
-        button.style.backgroundColor = '#3895FF'; // Replace with your desired colour
+        function openGame() {
+            document.getElementById("gameModal").style.display = "flex";
+            startGame();
+        }
+
+        function closeGame(event) {
+            if (!event || event.target.id === "gameModal") {
+                document.getElementById("gameModal").style.display = "none";
+            }
+        }
+
+        function startGame() {
+            const canvas = document.getElementById("gameCanvas");
+            const ctx = canvas.getContext("2d");
+            let player = { x: 140, y: 350, width: 20, height: 20 };
+            let obstacles = [];
+            let gameOver = false;
+
+            function drawPlayer() {
+                ctx.fillStyle = "blue";
+                ctx.fillRect(player.x, player.y, player.width, player.height);
+            }
+
+            function drawObstacles() {
+                ctx.fillStyle = "red";
+                obstacles.forEach(obstacle => {
+                    ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+                    obstacle.y += 5;
+                    if (obstacle.y > canvas.height) {
+                        obstacles.shift();
+                    }
+                    if (obstacle.y + obstacle.height > player.y && obstacle.x < player.x + player.width && obstacle.x + obstacle.width > player.x) {
+                        gameOver = true;
+                    }
+                });
+            }
+
+            function updateGame() {
+                if (gameOver) {
+                    ctx.fillStyle = "black";
+                    ctx.fillText("Game Over!", 110, 200);
+                    return;
+                }
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawPlayer();
+                drawObstacles();
+                requestAnimationFrame(updateGame);
+            }
+
+            document.addEventListener("keydown", function(event) {
+                if (event.key === "ArrowLeft" && player.x > 0) player.x -= 20;
+                if (event.key === "ArrowRight" && player.x < canvas.width - player.width) player.x += 20;
+            });
+
+            setInterval(() => {
+                if (!gameOver) {
+                    obstacles.push({ x: Math.random() * 280, y: 0, width: 20, height: 20 });
+                }
+            }, 1000);
+
+            updateGame();
+        }
     </script>
 </body>
 </html>
