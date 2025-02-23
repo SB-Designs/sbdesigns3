@@ -65,3 +65,10 @@ document.getElementById("copyright-year").textContent = new Date().getFullYear()
         document.querySelector(".nav-links").classList.toggle("active");
         document.querySelector(".menu-toggle").classList.toggle("active"); // Toggle the active class for the hamburger
     }
+        function launchConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
