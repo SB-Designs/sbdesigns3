@@ -132,6 +132,19 @@ nav .nav-links a:hover {
     background-color: #1E4D84;
 }
 
+.blue-button {
+    background-color: #1E4D84;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+}
+
+.blue-button:hover {
+    background-color: #0b2442;
+}
 /* Contact Section */
 .contact-section {
     font-family: 'Atkinson Hyperlegible Mono', sans-serif;
